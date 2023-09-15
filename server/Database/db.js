@@ -1,3 +1,3 @@
 module.exports = {
-  db: "mongodb://localhost:27017/Techzone",
+  db: "mongodb+srv://techzone:vOG3oUj6aK8nTpSn@cluster0.eyezetp.mongodb.net/Techzone",
 };

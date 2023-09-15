@@ -11,7 +11,9 @@ const orderRoute=require("../server/routes/Orders.route");
 
 // Connecting mongoDB Database
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Techzone")
+  .connect(
+    "mongodb+srv://techzone:vOG3oUj6aK8nTpSn@cluster0.eyezetp.mongodb.net/Techzone"
+  )
   .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
