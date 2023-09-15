@@ -2,6 +2,7 @@ let express = require("express");
 let mongoose = require("mongoose");
 let cors = require("cors");
 let bodyParser = require("body-parser");
+require("dotenv").config();
 
 // Express Route
 const userRoute = require("../server/routes/Users.route");
@@ -12,7 +13,7 @@ const orderRoute=require("../server/routes/Orders.route");
 // Connecting mongoDB Database
 mongoose
   .connect(
-    "mongodb+srv://techzone:vOG3oUj6aK8nTpSn@cluster0.eyezetp.mongodb.net/Techzone"
+    process.env.CONNECTION_URL
   )
   .then((x) => {
     console.log(

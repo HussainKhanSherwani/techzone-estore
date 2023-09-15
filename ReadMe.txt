@@ -4,7 +4,7 @@ Firstly make sure nodejs is installed in your pc then follow these steps:
 
 Go to server folder and follow these steps:
 1.go to terminal make sure you are in server folder
-2.When you are in server folder run command "npm install express mongoose bcrypt"
+2.When you are in server folder run command "npm install express mongoose bcrypt" also "npm i dotenv"
 3.Now after all the installations are done in server folder run command "npx nodemon ./index.js"
 4.Now server must get connected 
 
