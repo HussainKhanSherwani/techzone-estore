@@ -1,48 +1,54 @@
 import NavLink from './Navlink';
 import Bar from '../Icons/Bars';
-import SignUp from './../Signup/Signup';
-import { useEffect, useState } from 'react';
-import Navlink from './Navlink';
-import Login from './../Signup/Login';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 function Navbar(props) {  
+  const[category,setCategory]=useState("");
   const navigate = useNavigate();
+  const [navi, setNavi] = useState("opacity-0 top-[-500px] transition all ease-in duration-100");
   const [logIn,setLogIn]=useState(props.login);
+  const navig=(navi)=>{
+    setNavi(navi);
+  }
   function logout(e){
     setLogIn(false);
     props.onLogout(false);
+  
     navigate("/")
+  }
+  function handleFocus(category) {
+    setCategory(category);
+    // console.log("in navbar"+category);
+    props.onCategoryChange(category);
   }
   const login=()=>{
     if (props.login===true) {
       return (
         <li
-          className="mx-4 my-6 laptop:my-0 laptop:z-auto laptop:static absolute b
-      laptop:opacity-100 opacity-0 top-96 transition all ease-in duration-500"
+          className="mx-4 my-6 laptop:my-6"
         onClick={logout} >
           <p className="text-xl  text-white hover:text-black cursor-pointer">
             Logout
           </p>
         </li>
-      );
-      // return <NavLink key="7" category="Logout" onClick={logout}></NavLink>;
+      )
         
     }
     else{
-     return(
+     return (
        <>
-          <NavLink key="7" category="SignUp" link="/SignUp"></NavLink>
-          <NavLink key="8" category="Login" link="/Login"></NavLink>
-        </>
-     )
+         <NavLink
+           key="7"
+           category="SignUp"
+           link="/SignUp"
+           navi={navig}
+         ></NavLink>
+         <NavLink key="8" category="Login" link="/Login" navi={navig}></NavLink>
+       </>
+     );
     }
   }
     const navs = [
-      {
-        id: "0",
-        category: "Home",
-        link: "/",
-      },
       {
         id: "1",
         category: "Laptops",
@@ -55,7 +61,7 @@ function Navbar(props) {
       },
       {
         id: "3",
-        category: "HDD/SSD",
+        category: "HDD",
         link: "/HDD",
       },
       {
@@ -65,13 +71,8 @@ function Navbar(props) {
       },
       {
         id: "5",
-        category: "Mouse",
-        link: "/Mouse",
-      },
-      {
-        id: "6",
-        category: "About",
-        link: "/About",
+        category: "Mouses",
+        link: "/Mouses",
       },
     ];
     
@@ -81,27 +82,62 @@ function Navbar(props) {
       "
       >
         <nav
-          className="p-5 flex flex-col laptop:flex-row laptop:items-center laptop:justify-between"
+          className="p-5 laptop:flex laptop:items-center laptop:justify-between"
           style={{ backgroundColor: "#00B2FF" }}
         >
           <div className="basis-1/3 ">
             <span className="text-3xl font-[Poppins] text-white">
-              <img className="h-12" src="/images/TechZone.png"></img>
+              <img className="h-12 rounded-xl" src="/images/TechZone.png"></img>
               TechZone
             </span>
-            <span className="float-right laptop:hidden" onClick={() => {}}>
+            <span
+              className="float-right laptop:hidden"
+              onClick={() => {
+                if (
+                  navi ===
+                  "opacity-0 top-[-500px] transition all ease-in duration-100"
+                ) {
+                  setNavi("");
+                } else if (navi === "") {
+                  setNavi(
+                    "opacity-0 top-[-500px] transition all ease-in duration-100"
+                  );
+                }
+              }}
+            >
               <Bar></Bar>
             </span>
           </div>
 
-          <ul className="laptop:flex md:items-center">
+          <ul
+            className={
+              "laptop:flex latop:items-center laptop:static absolute w-full left-0 laptop:w-auto laptop:py-0 py-4 laptop:md:pl-0 pl-7 laptop:opacity-100  " +
+              navi
+            }
+            style={{ backgroundColor: "#00B2FF" }}
+          >
+            <NavLink key="0" category="Home" link="/" navi={navig}></NavLink>
             {navs.map((nav) => (
               <NavLink
                 key={nav.id}
                 category={nav.category}
                 link={nav.link}
+                click={handleFocus}
+                navi={navig}
               ></NavLink>
             ))}
+            <NavLink
+              key="6"
+              category="About"
+              link="/About"
+              navi={navig}
+            ></NavLink>
+            <NavLink
+              key="6"
+              category="Orders"
+              link="/AllOrders"
+              navi={navig}
+            ></NavLink>
             {login()}
           </ul>
         </nav>
@@ -109,3 +145,4 @@ function Navbar(props) {
     );
 }
 export default Navbar;
+ 

@@ -11,7 +11,7 @@ router.route("/SignUp").post((req, res, next) => {
   UserSchema.create(req.body)
     .then((result) => {
     
-      console.log(result);
+      // console.log(result);
       res.json(result);
     })
     .catch((err) => {

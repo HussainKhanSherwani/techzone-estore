@@ -5,7 +5,9 @@ let bodyParser = require("body-parser");
 
 // Express Route
 const userRoute = require("../server/routes/Users.route");
-const productRoute=require("../server/routes/Products.route")
+const productRoute=require("../server/routes/Products.route");
+const cartRoute=require("../server/routes/Carts.route");
+const orderRoute=require("../server/routes/Orders.route");
 
 // Connecting mongoDB Database
 mongoose
@@ -29,6 +31,8 @@ app.use(
 app.use(cors());
 app.use("/users", userRoute);
 app.use("/product",productRoute);
+app.use("/cart",cartRoute)
+app.use("/order",orderRoute)
 
 // PORT
 const port = process.env.PORT || 4000;

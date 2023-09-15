@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import "./Product.css"
+import axios from "axios";
 const Product=(props)=>{
   const navigate=useNavigate();
   if(!props.obj){
@@ -8,48 +10,67 @@ const Product=(props)=>{
     if(props.login===false){
       navigate("/Login");
     }
-  }
-   const handleBuy= () => {
-     if (props.login === false) {
-       navigate("/Login");
-     }
+    else{
+      // console.log(props.user_id)
+      // console.log(props.obj._id);
+      axios.post("http://localhost:4000/cart/",
+      {user_id:props.user_id,
+       product_id:props.obj._id,
+       product_name:props.obj.product_name,
+       product_price:props.obj.product_price,
+       product_image:props.obj.product_image
+    }).then(res=>{
+      // console.log(res.data.cart+"in product");
+      props.onAddToCart(res.data.cart);
+      // console.log(res.data.cart);
+    }).catch(err=>{
+      console.log(err);
+    });
     }
-    console.log(props.obj);
+  }
+    // console.log(props.obj);
     return (
-      <div className="h-72 m-2 even:bg-violet-700 odd:bg-indigo-700 drop-shadow-lg rounded-md brightness-90 sna">
-        <div className="h-1/2 w-full">
-          <img
-            className="h-full w-1/2 inline  float-right rounded-md"
-            src={props.obj.product_image}
-          
-          ></img>
-          <div className="h-full w-1/2 inline rounded-xl float-left ">
-            <p className="p-1 text-3xl font-bold float-left text-white">
-              {props.obj.product_name}
-            </p>
-            <p className="clear-left"></p>
-          </div>
-        </div>
-        <div className="p-1 h-1/3 overflow-hidden">
-          <p className=" p-1 text-lg text-white font-semibold">
+      <div
+        id="product"
+        className="border-2 border-black h-72 m-2 shadow-xl rounded-md bg-gray-100  hover:shadow-gray-500 opacity-[95] hover:opacity-100"
+      >
+        <img
+          className="w-[40%] inline rounded-md h-1/2  float-left laptop:h-3/4 laptop:w-[30%]"
+          src={props.obj.product_image}
+          onClick={() => {
+            navigate("/Product/" + props.obj._id, { state: props.obj });
+          }}
+        ></img>
+        <div className="h-3/4 w-[60%] laptop:w-[70%] inline  float-right overflow-hidden break-words hover:h-[45%]transition-all ease out duration-500 hover:overflow-visible hover:border-b-2 hover:border-t-2 border-black ">
+          <p
+            className="p-1 h-1/2 w-full text-sm font-[Poppins] font-bold float-left  overflow-hidden  laptop:text-lg"
+            onClick={() => {
+              navigate("/Product/" + props.obj._id, { state: props.obj });
+            }}
+          >
             {props.obj.product_name}
           </p>
+          <p
+            className="p-1 h-1/2  w-full text-gray-600 text-sm font-[Poppins] float-left clear-left overflow-hidden laptop:h-2/3 laptop:text-lg "
+            onClick={() => {
+              navigate("/Product/" + props.obj._id, { state: props.obj });
+            }}
+          >
+            {props.obj.product_description}
+          </p>
         </div>
-        <div className="p-1">
-          <p className="text-2xl text-white font-bold float-left ">
-            {props.obj.product_price}
+
+        <div className="p-1 h-1/4  w-full float-left laptop:h-[16.67%]">
+          <p className=" h-[95%] w-[40%] text-sm text-gray-600 font-bold font-[Poppins] float-left laptop:text-2xl">
+            {"Price:Rs." + props.obj.product_price + " "}
+            {"remaining " + props.obj.product_quantity}
           </p>
           <button
-            className=" mx-1 p-2 text-base text-white  float-right bg-purple-950 rounded-2xl"
+            className="h-[95%] mx-1 p-2 text-xs float-right rounded-2xl shadow-md shadow-sky-400 hover:shadow-sky-600 laptop:text-base laptop:h-fit"
+            style={{ backgroundColor: "#00B2FF" }}
             onClick={handleAddToCart}
           >
-            Add to Cart
-          </button>
-          <button
-            className=" mx-1 p-2 text-base  text-white float-right bg-purple-950 rounded-2xl"
-            onClick={handleBuy}
-          >
-            Buy
+            Add
           </button>
         </div>
       </div>
