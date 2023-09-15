@@ -66,44 +66,52 @@ const Login=(props)=>{
     } 
   }
     return (
-      <div className="h-full w-full bg-gradient-to-t  from-cyan-500 to-blue-500 brightness-125">
+      <div className="h-full w-full " style={{ backgroundColor: "#333333" }}>
         <form
           onSubmit={handleSubmit}
-          className="absolute py-4 top-1/3 right-1/4 left-0 h-fit w-full bg-gradient-to-t from-indigo-800 to-violet-800 brightness-125 rounded-xl md:w-1/2 md:left-1/4 "
+          className="absolute py-4 top-1/3 right-1/4 left-0 h-fit w-full  rounded-xl md:w-1/2 md:left-1/4 "
+          style={{ backgroundColor: "#000044" }}
         >
           <input
             id="username"
-            className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+            className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md  focus:opacity-70 transition ease-out duration-500 "
+            style={{ backgroundColor: "#C0C0C0" }}
             type="text"
             name="username"
             value={user_name}
             onChange={onChangeUsername}
             placeholder="Username"
-            onFocus={() =>{
-              setAlreadyLoggedIn(" text-lg invisible text-red-500");setMessage(""); }
-            }
+            onFocus={() => {
+              setAlreadyLoggedIn(" text-lg invisible text-red-500");
+              setMessage("");
+            }}
           ></input>
           <br></br>
           <input
             id="password"
-            className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+            className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md focus:opacity-70 transition ease-out duration-500 "
+            style={{ backgroundColor: "#C0C0C0" }}
             type="password"
             name="password"
             value={Password}
             onChange={onChangePassword}
             placeholder="Password"
-            onFocus={() =>{
-            setAlreadyLoggedIn(" text-lg invisible text-red-500");setMessage(""); }}
+            onFocus={() => {
+              setAlreadyLoggedIn(" text-lg invisible text-red-500");
+              setMessage("");
+            }}
             required
           ></input>
           <p className={alreadyLoggedIn}>{message}</p>
           <input
-            className="mx-6 my-6 h-9 w-[90%] rounded-md bg-blue-800 brightness-50 focus:bg-blue-950 transition ease-linear duration-500"
+            className="mx-6 my-6 h-9 w-[90%] rounded-md focus:opacity-70 transition ease-linear duration-500"
+            style={{ backgroundColor: "#00B2FF" }}
             type="submit"
             value="Login"
           ></input>
           <button
-            className="mx-6  h-9 w-[90%] rounded-md bg-blue-900 brightness-50 focus:bg-blue-950 transition ease-linear duration-500"
+            className="mx-6  h-9 w-[90%] rounded-md focus:opacity-70 transition ease-linear duration-500"
+            style={{ backgroundColor: "#00B2FF" }}
             onClick={() => navigate("/SignUp")}
           >
             New Here?Go SignUp

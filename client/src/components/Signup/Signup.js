@@ -50,13 +50,15 @@ const SignUp = () => {
   }
 
   return (
-    <div className="h-full w-full bg-gradient-to-t  from-cyan-500 to-blue-500 brightness-125">
+    <div className="h-full w-full " style={{ backgroundColor: "#333333" }}>
       <form
-        className="absolute py-4 top-1/4 right-1/4 left-0 h-fit w-full bg-gradient-to-t from-indigo-800 to-violet-800  rounded-xl  md:w-1/2 md:left-1/4 brightness-125"
+        className="absolute py-4 top-1/4 right-1/4 left-0 h-fit w-full  rounded-xl  md:w-1/2 md:left-1/4"
+        style={{ backgroundColor: "#000044" }}
         onSubmit={handleSubmit}
       >
         <input
-          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md  focus:opacity-70 transition ease-out duration-500 "
+          style={{ backgroundColor: "#C0C0C0" }}
           type="text"
           name="fname"
           value={Fname}
@@ -66,7 +68,8 @@ const SignUp = () => {
         ></input>
         <br></br>
         <input
-          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md  focus:opacity-70 transition ease-out duration-500 "
+          style={{ backgroundColor: "#C0C0C0" }}
           type="text"
           name="username"
           placeholder="Username"
@@ -77,7 +80,8 @@ const SignUp = () => {
 
         <br></br>
         <input
-          className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+          className="mx-6 px-3 my-3 h-9 w-[90%]  rounded-md focus:opacity-70 transition ease-out duration-500 "
+          style={{ backgroundColor: "#C0C0C0" }}
           type="email"
           name="email"
           value={Email}
@@ -88,7 +92,8 @@ const SignUp = () => {
 
         <br></br>
         <input
-          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md opacity-60 focus:opacity-70 transition ease-out duration-500 "
+          className="mx-6 px-3 my-3 h-9 w-[90%] rounded-md focus:opacity-70 transition ease-out duration-500 "
+          style={{ backgroundColor: "#C0C0C0" }}
           type="password"
           name="password"
           placeholder="Password"
@@ -99,13 +104,16 @@ const SignUp = () => {
         <br></br>
         <input
           id="signupbutton"
-          className="mx-6 my-6 h-9 w-[90%] rounded-md bg-blue-900 brightness-50 focus:bg-blue-950 transition ease-linear duration-500"
+          className="mx-6 my-6 h-9 w-[90%] rounded-md focus:opacity-70 transition ease-linear duration-500"
+          style={{ backgroundColor: "#00B2FF" }}
           type="submit"
           value="Sign Up"
         ></input>
         <br></br>
         <button
-          className="mx-6  h-9 w-[90%] rounded-md bg-blue-900 brightness-50 focus:bg-blue-950 transition ease-linear duration-500" onClick={()=>navigate("/Login")}
+          className="mx-6  h-9 w-[90%] rounded-md focus:opacity-70 transition ease-linear duration-500"
+          style={{ backgroundColor: "#00B2FF" }}
+          onClick={() => navigate("/Login")}
         >
           Already have an Account?Login
         </button>

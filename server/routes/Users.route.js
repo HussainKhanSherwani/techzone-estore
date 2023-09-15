@@ -23,7 +23,6 @@ router.route("/SignUp").post((req, res, next) => {
 router.route("/Login").post((req,res)=>{
   const username=req.body.username;
   const password=req.body.password;
-
     UserSchema.findOne({username}).then(user=>{
       if (!user) {
         res.status(404).send({message:"User not Found"})

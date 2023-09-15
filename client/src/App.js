@@ -28,6 +28,22 @@ function App() {
           path="/Monitors"
           element={<ProductPage login={logIn} category="Monitors"></ProductPage>}
         ></Route>
+        <Route
+          path="/Laptops"
+          element={<ProductPage login={logIn} category="Laptops"></ProductPage>}
+        ></Route>
+        <Route
+          path="/Keyboards"
+          element={<ProductPage login={logIn} category="Keyboards"></ProductPage>}
+        ></Route>
+        <Route
+          path="/Mouse"
+          element={<ProductPage login={logIn} category="Mouses"></ProductPage>}
+        ></Route>
+        <Route
+          path="/HDD"
+          element={<ProductPage login={logIn} category="HDD"></ProductPage>}
+        ></Route>
       </Routes>
     </div>
   );

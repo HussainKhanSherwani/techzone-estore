@@ -56,7 +56,7 @@ function Navbar(props) {
       {
         id: "3",
         category: "HDD/SSD",
-        link: "/HDD/SSD",
+        link: "/HDD",
       },
       {
         id: "4",
@@ -76,23 +76,32 @@ function Navbar(props) {
     ];
     
     return (
-      <div className="fixed w-full z-10
-      ">
-        <nav className="p-5 flex flex-col laptop:flex-row laptop:items-center laptop:justify-between bg-gradient-to-r from-gray-900 to-blue-900 brightness-150">
+      <div
+        className="fixed w-full z-10
+      "
+      >
+        <nav
+          className="p-5 flex flex-col laptop:flex-row laptop:items-center laptop:justify-between"
+          style={{ backgroundColor: "#00B2FF" }}
+        >
           <div className="basis-1/3 ">
-            <span className="text-3xl font-[Poppins] text-blue-700">
+            <span className="text-3xl font-[Poppins] text-white">
               <img className="h-12" src="/images/TechZone.png"></img>
               TechZone
-            </span >
-            <span className='float-right laptop:hidden' onClick={()=>{}}>
+            </span>
+            <span className="float-right laptop:hidden" onClick={() => {}}>
               <Bar></Bar>
             </span>
           </div>
 
           <ul className="laptop:flex md:items-center">
-            {
-              navs.map(nav=><NavLink key={nav.id} category={nav.category} link={nav.link} ></NavLink>)
-            }
+            {navs.map((nav) => (
+              <NavLink
+                key={nav.id}
+                category={nav.category}
+                link={nav.link}
+              ></NavLink>
+            ))}
             {login()}
           </ul>
         </nav>

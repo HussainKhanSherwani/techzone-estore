@@ -6,27 +6,15 @@ const router = express.Router();
 let ProductSchema = require("../Models/Product");
 
 // get Products by category
-router.route("/").get((req,res)=>{
-  ProductSchema.find().then(product=>{
+router.route("/:category").get((req,res)=>{
+  const product_category=req.params.category;
+  console.log({product_category})
+  ProductSchema.find({product_category}).then(product=>{
     res.json(product);
 }).catch(err=>{
   console.log(err);
-  console.log(err);
 })
 })
-
-// router.get("/:category", (req, res, next) => {
-//   const { category } = req.params;
-
-//   Product.find({ product_category: category })
-//     .then((products) => {
-//       res.json(products);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// });
-
 
 
 //Login User
